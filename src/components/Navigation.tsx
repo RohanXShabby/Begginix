@@ -2,17 +2,18 @@ import { useState } from "react";
 import { Menu, X, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import BeginnixLogo from "/BEGINNIX-LOGO.svg";
+import { NavLink } from "react-router-dom";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: "CREATIVE DESIGN", href: "#design" },
-    { label: "UI/UX", href: "#uiux" },
-    { label: "MARKETING", href: "#marketing" },
-    { label: "MOTION", href: "#motion" },
-    { label: "ANIMATION", href: "#animation" },
-    { label: "BRANDING", href: "#branding" }
+    { label: "BRANDING", href: "branding" },
+    { label: "CREATIVE DESIGN", href: "design" },
+    { label: "UI/UX", href: "uiux" },
+    { label: "MARKETING", href: "marketing" },
+    { label: "SEO", href: "seo" },
   ];
 
   return (
@@ -20,44 +21,40 @@ export const Navigation = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-2xl font-bold tracking-wider">
-            gleamy
+          <div className="w-32 h-auto md:w-48">
+            <img src={BeginnixLogo} alt="Beginnix Logo" />
           </div>
 
           {/* Language Selection */}
           <div className="hidden md:flex items-center space-x-4 text-sm">
-            <span className="text-crimson font-medium">FB</span>
+            <a href="#">FB</a>
             <span>•</span>
-            <span>IN</span>
+            <a href="#">IN</a>
             <span>•</span>
-            <span>DR</span>
+            <a href="#">DR</a>
             <span>•</span>
-            <span>BE</span>
+            <a href="#">BE</a>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            {navItems.slice(0, 3).map((item) => (
-              <a
+            {navItems.map((item) => (
+              <NavLink
                 key={item.label}
-                href={item.href}
+                to={item.href}
                 className="text-sm font-medium hover:text-crimson transition-colors"
               >
                 {item.label}
-              </a>
+              </NavLink>
             ))}
           </div>
 
           {/* Right side buttons */}
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon" className="hover:bg-secondary">
-              <Search className="w-5 h-5" />
-            </Button>
-            
+          <div className="flex items-center lg:hidden space-x-4">
             <Button
               variant="ghost"
               size="icon"
-              className="hover:bg-secondary"
+              className="hover:bg-secondary lg:hidden inline-flex"
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -76,7 +73,7 @@ export const Navigation = () => {
                 key={item.label}
                 href={item.href}
                 className="block text-sm font-medium hover:text-crimson transition-colors"
-                style={{ 
+                style={{
                   animationDelay: `${index * 0.1}s`,
                   animationFillMode: isOpen ? "forwards" : "backwards"
                 }}
