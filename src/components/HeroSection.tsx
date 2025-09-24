@@ -1,65 +1,49 @@
-import { useState, useEffect } from "react";
-import { LoadingSpinner } from "./LoadingSpinner";
 import RotatingRibbon from "./ui/marque-ribbon";
 import { useDevice } from "@/hooks/use-mobile";
 import B from "/B.svg";
+import { motion } from "framer-motion";
+import { fadeInUp, staggerContainer, fadeIn } from "@/lib/motion";
 
 export const HeroSection = () => {
-  const [isLoading, setIsLoading] = useState(true);
   const { isMobile } = useDevice();
-
-  // Simulate loading
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (isLoading) {
-    return (
-      <section className="min-h-screen flex items-center justify-center">
-        <div className="text-center space-y-8">
-          <LoadingSpinner size="lg" />
-          <div className="space-y-2">
-            <h2 className="text-xl font-light">Loading Experience</h2>
-            <div className="w-32 h-1 bg-muted rounded-full overflow-hidden">
-              <div
-                className="h-full bg-crimson rounded-full animate-pulse"
-                style={{ width: "70%" }}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <motion.section
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      variants={staggerContainer(0.08, 0)}
+      initial="hidden"
+      animate="show"
+    >
       {isMobile ? (
-        <div className="absolute left-0 top-10 flex w-full justify-evenly text-center py-20 -translate-y-1/2 text-xs font-medium tracking-widest mt-20">
+        <motion.div
+          className="absolute left-0 top-10 flex w-full justify-evenly text-center py-20 -translate-y-1/2 text-xs font-medium tracking-widest mt-20"
+          variants={fadeIn}
+        >
           <div className="transform origin-center whitespace-nowrap text-muted-foreground">DIGITAL MARKETING</div>
           <div className="transform origin-center whitespace-nowrap text-muted-foreground">DESIGNING</div>
           <div className="transform origin-center whitespace-nowrap text-muted-foreground">DEVELOPMENT</div>
-        </div>
+        </motion.div>
       ) : (
-        <div className="absolute left-6 top-1/2 flex flex-col h-screen justify-evenly text-center py-20 -translate-y-1/2 text-xs font-medium tracking-widest mt-20">
+        <motion.div
+          className="absolute left-6 top-1/2 flex flex-col h-screen justify-evenly text-center py-20 -translate-y-1/2 text-xs font-medium tracking-widest mt-20"
+          variants={fadeIn}
+        >
           <div className="transform -rotate-90 origin-center whitespace-nowrap text-muted-foreground">DIGITAL MARKETING</div>
           <div className="transform -rotate-90 origin-center whitespace-nowrap text-muted-foreground">DESIGNING</div>
           <div className="transform -rotate-90 origin-center whitespace-nowrap text-muted-foreground">DEVELOPMENT</div>
-        </div>
+        </motion.div>
       )}
 
       {/* Main content */}
-      <div className="text-center space-y-8 z-10 bg-blend-difference px-6 max-w-6xl mx-auto">
-        <div className="space-y-6">
-          <h1 className="text-5xl text-left md:text-6xl lg:text-8xl font-semibold tracking-tight mt-8 transition-all .text-stroke-3">
+      <motion.div className="text-center space-y-8 z-10 bg-blend-difference px-6 max-w-6xl mx-auto">
+        <motion.div className="space-y-6" variants={fadeInUp}>
+          <h1 className="text-5xl text-left md:text-6xl lg:text-8xl font-semibold font-barlow tracking-tight mt-8 transition-all .text-stroke-3">
             <span className="text-crimson bg-blend-difference">Build.Design.Grow.</span>
             <br />We craft brands with<br /> design and tech.
           </h1>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
       {!isMobile && (
         <>
           <div className="absolute -left-100 bottom-0 z-0 w-[200vw]">
@@ -73,6 +57,6 @@ export const HeroSection = () => {
       <div className="absolute left-0 top-[30%] h-1/2 w-1/2 pointer-events-none">
         <img className="w-full h-full object-contain opacity-30" src={B} alt="" />
       </div>
-    </section>
+    </motion.section>
   );
 };

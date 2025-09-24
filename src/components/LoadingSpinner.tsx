@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
 interface LoadingSpinnerProps {
   size?: "sm" | "md" | "lg";
@@ -8,7 +9,7 @@ interface LoadingSpinnerProps {
 export const LoadingSpinner = ({ size = "md", className }: LoadingSpinnerProps) => {
   const sizeClasses = {
     sm: "w-4 h-4",
-    md: "w-8 h-8", 
+    md: "w-8 h-8",
     lg: "w-12 h-12"
   };
 
@@ -39,4 +40,33 @@ export const LoadingDots = ({ className }: { className?: string }) => {
       ))}
     </div>
   );
+};
+
+export const LoaderWithProgress = ({ speed = 50 }: { speed?: number }) => {
+  const [progress, setProgress] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    if (progress < 100) {
+      const interval = setInterval(() => {
+        setProgress((prev) => Math.min(prev + 2, 100));
+      }, speed);
+      return () => clearInterval(interval);
+    } else {
+      const timeout = setTimeout(() => setVisible(false), 800); // smooth fade
+      return () => clearTimeout(timeout);
+    }
+  }, [progress, speed]);
+
+  return visible ? (
+    <div className="fixed inset-0 flex items-center justify-center bg-black transition-opacity duration-700 ease-in-out z-50">
+      <div className="flex flex-col items-center space-y-4">
+        <LoadingSpinner size="lg" />
+        <LoadingDots />
+      </div>
+      <div className="absolute bottom-4 right-4 text-white text-sm font-bold transition-opacity duration-700 ease-in-out">
+        {progress}%
+      </div>
+    </div>
+  ) : null;
 };
