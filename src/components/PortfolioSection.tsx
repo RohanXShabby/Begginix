@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { portfolioItems, PortfolioCategory } from "@/data/portfolio-items";
 import { filterPortfolioItems } from "@/lib/portfolio-utils";
 import { PortfolioCard } from "@/components/ui/portfolio-card";
@@ -7,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer, fadeIn } from "@/lib/motion";
 
-const categories: (PortfolioCategory | 'All')[] = ['All', 'Branding', 'Creative Design', 'UI/UX', 'Development'];
+const categories: (PortfolioCategory | 'All')[] = ['All', 'Branding', 'Creative Design', 'UI/UX', 'Development', 'Marketing', 'SEO'];
 
 export const Portfolio = () => {
     const [selectedCategory, setSelectedCategory] = useState<PortfolioCategory | 'All'>('All');
@@ -54,12 +55,23 @@ export const Portfolio = () => {
 
                 {/* Portfolio Grid */}
                 <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" variants={staggerContainer(0.08, 0.2)}>
-                    {filteredItems.map((item) => (
+                    {filteredItems.slice(0, 6).map((item) => (
                         <motion.div key={item.id} variants={fadeInUp}>
                             <PortfolioCard item={item} />
                         </motion.div>
                     ))}
                 </motion.div>
+
+                {/* View All Projects Button */}
+                {filteredItems.length > 6 && (
+                    <motion.div className="text-center mt-12" variants={fadeInUp}>
+                        <Link to="/projects">
+                            <Button size="lg" variant="outline" className="bg-crimson text-white hover:bg-crimson/90 border-crimson">
+                                View All Projects
+                            </Button>
+                        </Link>
+                    </motion.div>
+                )}
 
                 {/* Empty State */}
                 {filteredItems.length === 0 && (

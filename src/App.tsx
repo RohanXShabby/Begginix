@@ -7,6 +7,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Footer } from "@/components/Footer";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import { ProjectDetail } from "./pages/ProjectDetail";
+import { Projects } from "./pages/Projects";
 import { Navigation } from "./components/Navigation";
 
 const queryClient = new QueryClient();
@@ -21,6 +23,8 @@ const App = () => (
           <Navigation />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/project/:id" element={<ProjectDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           {/* Mobile-only Footer with social links */}

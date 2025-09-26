@@ -3,21 +3,27 @@ import { Menu, X, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import BeginnixLogo from "/BEGINNIX-LOGO.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fadeInUp, fadeIn, staggerContainer } from "@/lib/motion";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navItems = [
-    { label: "WEBSITE DEVLOPMENT", href: "webdev" },
-    { label: "BRANDING", href: "branding" },
-    { label: "CREATIVE DESIGN", href: "design" },
-    { label: "UI/UX", href: "uiux" },
-    { label: "MARKETING", href: "marketing" },
-    { label: "SEO", href: "seo" },
+    { label: "WEBSITE DEVLOPMENT", href: "webdev", category: "Development" },
+    { label: "BRANDING", href: "branding", category: "Branding" },
+    { label: "CREATIVE DESIGN", href: "design", category: "Creative Design" },
+    { label: "UI/UX", href: "uiux", category: "UI/UX" },
+    { label: "MARKETING", href: "marketing", category: "Marketing" },
+    { label: "SEO", href: "seo", category: "SEO" },
   ];
+
+  const handleCategoryClick = (category: string) => {
+    navigate(`/projects?category=${category}`);
+    setIsOpen(false);
+  };
 
   return (
     <motion.nav
@@ -30,7 +36,9 @@ export const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.div className="w-32 h-auto md:w-48" variants={fadeInUp}>
-            <img src={BeginnixLogo} alt="Beginnix Logo" />
+            <Link to="/">
+              <img src={BeginnixLogo} alt="Beginnix Logo" className="cursor-pointer" />
+            </Link>
           </motion.div>
 
           {/* social media */}
@@ -48,12 +56,21 @@ export const Navigation = () => {
           <motion.div className="hidden lg:flex items-center space-x-8" variants={staggerContainer(0.05)}>
             {navItems.map((item) => (
               <motion.div key={item.label} variants={fadeInUp}>
-                <NavLink
-                  to={item.href}
-                  className="text-sm font-medium hover:text-crimson transition-colors"
-                >
-                  {item.label}
-                </NavLink>
+                {item.category ? (
+                  <button
+                    onClick={() => handleCategoryClick(item.category)}
+                    className="text-sm font-medium hover:text-crimson transition-colors"
+                  >
+                    {item.label}
+                  </button>
+                ) : (
+                  <a
+                    href={`#${item.href}`}
+                    className="text-sm font-medium hover:text-crimson transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                )}
               </motion.div>
             ))}
           </motion.div>
@@ -78,18 +95,30 @@ export const Navigation = () => {
         )} variants={staggerContainer(0.05)}>
           <div className="space-y-4 pb-6">
             {navItems.map((item, index) => (
-              <motion.a
+              <motion.div
                 key={item.label}
-                href={item.href}
-                className="block text-sm font-medium hover:text-crimson transition-colors"
                 style={{
                   animationDelay: `${index * 0.1}s`,
                   animationFillMode: isOpen ? "forwards" : "backwards"
                 }}
-                onClick={() => setIsOpen(false)}
               >
-                {item.label}
-              </motion.a>
+                {item.category ? (
+                  <button
+                    onClick={() => handleCategoryClick(item.category)}
+                    className="block text-sm font-medium hover:text-crimson transition-colors w-full text-left"
+                  >
+                    {item.label}
+                  </button>
+                ) : (
+                  <a
+                    href={`#${item.href}`}
+                    className="block text-sm font-medium hover:text-crimson transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                )}
+              </motion.div>
             ))}
           </div>
         </motion.div>
