@@ -5,15 +5,26 @@ const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+    console.error(
+      "404 Error: User attempted to access non-existent route:",
+      location.pathname
+    );
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        <p className="mb-4 text-xl text-gray-600">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 underline hover:text-blue-700">
+    <div className="flex min-h-screen items-center justify-center bg-background text-foreground font-barlow">
+      <div className="text-center p-6">
+        <h1 className="mb-4 text-8xl font-extrabold font-barlow-condensed bg-clip-text text-transparent"
+          style={{ backgroundImage: "var(--gradient-crimson)" }}>
+          404
+        </h1>
+        <p className="mb-6 text-2xl text-muted-foreground font-barlow">
+          Oops! The page you’re looking for doesn’t exist.
+        </p>
+        <a
+          href="/"
+          className="inline-block px-6 py-3 rounded-lg bg-[hsl(var(--crimson))] text-white font-semibold shadow-[var(--shadow-crimson)] hover:bg-[hsl(var(--crimson-light))] transition-all duration-300"
+        >
           Return to Home
         </a>
       </div>
