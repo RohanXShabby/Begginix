@@ -3,15 +3,19 @@ import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { fadeInUp, fadeIn, staggerContainer } from "@/lib/motion";
-
-import { FiPenTool, FiLayout, FiCamera, FiFilm, FiBriefcase } from "react-icons/fi";
-import { IoMegaphoneOutline } from "react-icons/io5";
+import { FiLayout, FiGlobe, FiBriefcase, FiTool,FiSearch, FiTarget, FiCamera, FiPenTool } from "react-icons/fi";
+import { IoLogoWordpress, IoShareSocialOutline } from "react-icons/io5";
 
 const services = [
   {
-    title: "CREATIVE DESIGN",
-    description: "Innovative visual solutions that capture your brand essence",
-    icon: FiPenTool
+    title: "WEBSITE DEVELOPMENT",
+    description: "Unique and interactive websites, both WordPress and custom coded",
+    icon: FiGlobe
+  },
+  {
+    title: "BRANDING",
+    description: "Complete brand identity solutions for lasting impact",
+    icon: FiBriefcase
   },
   {
     title: "UI/UX",
@@ -19,24 +23,34 @@ const services = [
     icon: FiLayout
   },
   {
-    title: "MARKETING",
-    description: "Strategic campaigns that drive engagement and growth",
-    icon: IoMegaphoneOutline
+    title: "SEO",
+    description: "In-page and off-page optimization for better visibility",
+    icon: FiSearch
   },
   {
-    title: "MOTION",
-    description: "Dynamic animations that bring your content to life",
+    title: "MARKETING",
+    description: "Performance marketing strategies to drive measurable results",
+    icon: FiTarget
+  },
+  {
+    title: "PRODUCT SHOOT",
+    description: "High-quality photography to showcase your products",
     icon: FiCamera
   },
   {
-    title: "ANIMATION",
-    description: "Compelling visual storytelling through motion graphics",
-    icon: FiFilm
+    title: "CONTENT CREATION",
+    description: "Creative content that resonates with your audience",
+    icon: FiPenTool
   },
   {
-    title: "BRANDING",
-    description: "Complete brand identity solutions for lasting impact",
-    icon: FiBriefcase
+    title: "SOCIAL MEDIA SETUP",
+    description: "Professional setup and optimization of social media channels",
+    icon: IoShareSocialOutline
+  },
+  {
+    title: "MAINTENANCE & SUPPORT",
+    description: "Ongoing updates, security, and technical support for your platforms",
+    icon: FiTool
   }
 ];
 
