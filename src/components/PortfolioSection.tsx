@@ -35,23 +35,6 @@ export const Portfolio = () => {
                     </motion.p>
                 </div>
 
-                {/* Category Filter */}
-                <motion.div className="flex flex-wrap justify-center gap-4 mb-12" variants={staggerContainer(0.06)}>
-                    {categories.map((category) => (
-                        <motion.div key={category} variants={fadeInUp}>
-                            <Button
-                                variant={selectedCategory === category ? "default" : "outline"}
-                                className={cn(
-                                    "transition-all",
-                                    selectedCategory === category && "bg-crimson text-white hover:bg-crimson/90"
-                                )}
-                                onClick={() => setSelectedCategory(category)}
-                            >
-                                {category}
-                            </Button>
-                        </motion.div>
-                    ))}
-                </motion.div>
 
                 {/* Portfolio Grid */}
                 <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" variants={staggerContainer(0.08, 0.2)}>

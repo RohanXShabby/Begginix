@@ -8,7 +8,7 @@ import { IoLogoWordpress, IoShareSocialOutline } from "react-icons/io5";
 
 const services = [
   {
-    title: "WEBSITE DEVELOPMENT",
+    title: "DEVELOPMENT",
     description: "Unique and interactive websites, both WordPress and custom coded",
     icon: FiGlobe
   },
@@ -48,7 +48,7 @@ const services = [
     icon: IoShareSocialOutline
   },
   {
-    title: "MAINTENANCE & SUPPORT",
+    title: "MAINTENANCE",
     description: "Ongoing updates, security, and technical support for your platforms",
     icon: FiTool
   }
