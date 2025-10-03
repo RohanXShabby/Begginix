@@ -13,7 +13,7 @@ export const SEO = ({
     description = 'Beginnix is a leading creative digital agency specializing in brand design, UI/UX, digital marketing, motion graphics, and web development solutions. Transform your brand with our innovative designs.',
     keywords = 'creative agency, digital agency, brand design, ui ux design, digital marketing, motion graphics, animation studio, branding agency, web development company',
     image = '/opengraph-image.png',
-    url = 'https://beginnix.com',
+    url = 'https://beginnix.in',
 }: SEOProps) => {
     return (
         <Helmet>
