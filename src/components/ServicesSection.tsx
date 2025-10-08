@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { fadeInUp, fadeIn, staggerContainer } from "@/lib/motion";
-import { FiLayout, FiGlobe, FiBriefcase, FiTool,FiSearch, FiTarget, FiCamera, FiPenTool } from "react-icons/fi";
+import { FiLayout, FiGlobe, FiBriefcase, FiTool, FiSearch, FiTarget, FiCamera, FiPenTool } from "react-icons/fi";
 import { IoLogoWordpress, IoShareSocialOutline } from "react-icons/io5";
 
 const services = [
@@ -72,14 +72,14 @@ export const ServicesSection = () => {
 
 
       <div className="relative z-50 container mx-auto max-w-7xl">
-        <div className="text-center mb-20">
+        <header className="text-center mb-20">
           <motion.h2 className="text-5xl md:text-8xl font-semibold mb-6 font-barlow" variants={fadeInUp}>
             Our Services
           </motion.h2>
           <motion.p className="text-lg text-muted-foreground max-w-2xl mx-auto" variants={fadeIn}>
-            Comprehensive solutions for your digital presence
+            Comprehensive digital solutions to elevate your brand and drive business growth. We specialize in creating exceptional digital experiences that connect with your audience and deliver measurable results.
           </motion.p>
-        </div>
+        </header>
 
         <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" variants={staggerContainer(0.08, 0.1)}>
           {services.map((service, index) => (
@@ -117,24 +117,24 @@ export const ServicesSection = () => {
         </motion.div>
 
       </div>
-        {/* Floating accent elements */}
-        <div className="absolute z-10 top-20 right-20 w-2 h-2 bg-crimson rounded-full animate-pulse-crimson opacity-60" />
-        <div className="absolute z-10 bottom-20 left-20 w-3 h-3 bg-crimson rounded-full animate-pulse-crimson opacity-40"
-          style={{ animationDelay: "1s" }} />
-        <div className="absolute z-10 top-32 left-1/3 w-1.5 h-1.5 bg-crimson rounded-full animate-pulse-crimson opacity-50"
-          style={{ animationDelay: "0.3s" }} />
-        <div className="absolute z-10 top-1/2 left-16 w-1 h-1 bg-crimson rounded-full  opacity-70"
-          style={{ animationDelay: "0.7s" }} />
-        <div className="absolute z-10 top-16 right-1/3 w-2 h-2 bg-crimson rounded-full animate-pulse-crimson opacity-45"
-          style={{ animationDelay: "2.2s" }} />
-        <div className="absolute z-10 top-24 left-24 w-3 h-3 bg-crimson rounded-full animate-pulse-crimson opacity-30"
-          style={{ animationDelay: "1.5s" }} />
-        <div className="absolute z-10 bottom-16 right-16 w-1 h-1 bg-crimson rounded-full animate-pulse-crimson opacity-65"
-          style={{ animationDelay: "0.4s" }} />
-        <div className="absolute z-10 bottom-24 left-1/4 w-1.5 h-1.5 bg-crimson rounded-full  opacity-75"
-          style={{ animationDelay: "0.1s" }} />
-        <div className="absolute z-10 top-1/4 right-24 w-2.5 h-2.5 bg-crimson rounded-full animate-pulse-crimson opacity-50"
-          style={{ animationDelay: "1.3s" }} />
+      {/* Floating accent elements */}
+      <div className="absolute z-10 top-20 right-20 w-2 h-2 bg-crimson rounded-full animate-pulse-crimson opacity-60" />
+      <div className="absolute z-10 bottom-20 left-20 w-3 h-3 bg-crimson rounded-full animate-pulse-crimson opacity-40"
+        style={{ animationDelay: "1s" }} />
+      <div className="absolute z-10 top-32 left-1/3 w-1.5 h-1.5 bg-crimson rounded-full animate-pulse-crimson opacity-50"
+        style={{ animationDelay: "0.3s" }} />
+      <div className="absolute z-10 top-1/2 left-16 w-1 h-1 bg-crimson rounded-full  opacity-70"
+        style={{ animationDelay: "0.7s" }} />
+      <div className="absolute z-10 top-16 right-1/3 w-2 h-2 bg-crimson rounded-full animate-pulse-crimson opacity-45"
+        style={{ animationDelay: "2.2s" }} />
+      <div className="absolute z-10 top-24 left-24 w-3 h-3 bg-crimson rounded-full animate-pulse-crimson opacity-30"
+        style={{ animationDelay: "1.5s" }} />
+      <div className="absolute z-10 bottom-16 right-16 w-1 h-1 bg-crimson rounded-full animate-pulse-crimson opacity-65"
+        style={{ animationDelay: "0.4s" }} />
+      <div className="absolute z-10 bottom-24 left-1/4 w-1.5 h-1.5 bg-crimson rounded-full  opacity-75"
+        style={{ animationDelay: "0.1s" }} />
+      <div className="absolute z-10 top-1/4 right-24 w-2.5 h-2.5 bg-crimson rounded-full animate-pulse-crimson opacity-50"
+        style={{ animationDelay: "1.3s" }} />
     </motion.section>
   );
 };

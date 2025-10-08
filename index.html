@@ -41,19 +41,51 @@
     <!-- Pinterest -->
     <meta name="pinterest-rich-pin" content="true" />
 
-    <meta name="theme-color" content="#000000" />
-    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="theme-color" content="#dc2626" />
+    <meta name="msapplication-TileColor" content="#dc2626" />
     <meta name="msapplication-config" content="/browserconfig.xml" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="geo.region" content="IN" />
+    <meta name="geo.placename" content="India" />
+    <meta name="geo.position" content="20.5937;78.9629" />
+    <meta name="ICBM" content="20.5937, 78.9629" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="language" content="en" />
+    <meta name="copyright" content="Beginnix Studio" />
+    <meta name="designer" content="Beginnix Studio" />
+    <meta name="reply-to" content="hello@beginnix.in" />
+    <meta name="owner" content="Beginnix Studio" />
+    <meta name="url" content="https://beginnix.in" />
+    <meta name="identifier-URL" content="https://beginnix.in" />
+    <meta name="coverage" content="Worldwide" />
+    <meta name="target" content="all" />
+    <meta name="audience" content="businesses, entrepreneurs, startups" />
     
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Beginnix",
+      "alternateName": "Beginnix Studio",
       "url": "https://beginnix.in",
-      "logo": "https://beginnix.in/logo.png",
-      "description": "Creative digital agency specializing in brand design, UI/UX, digital marketing, motion graphics, and web development solutions.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://beginnix.in/BEGINNIX-LOGO.svg",
+        "width": "300",
+        "height": "100"
+      },
+      "image": "https://beginnix.in/beginnix-card.jpg",
+      "description": "Leading creative digital agency specializing in brand design, UI/UX, digital marketing, motion graphics, and web development solutions. Transform your brand with our innovative designs.",
       "foundingDate": "2020",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Beginnix Team"
+        }
+      ],
       "sameAs": [
         "https://twitter.com/beginnix",
         "https://linkedin.com/company/beginnix",
@@ -63,19 +95,67 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer service",
-        "email": "hello@beginnix.in"
+        "email": "hello@beginnix.in",
+        "availableLanguage": "English",
+        "areaServed": "Worldwide"
       },
       "address": {
         "@type": "PostalAddress",
-        "addressCountry": "IN"
+        "addressCountry": "IN",
+        "addressRegion": "India"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Worldwide"
       },
       "serviceType": [
         "Brand Design",
         "UI/UX Design", 
         "Digital Marketing",
         "Motion Graphics",
-        "Web Development"
-      ]
+        "Web Development",
+        "SEO Optimization",
+        "Content Creation",
+        "Social Media Marketing"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Digital Agency Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Development",
+              "description": "Custom websites and web applications"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Brand Design",
+              "description": "Complete brand identity solutions"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "UI/UX Design",
+              "description": "User-centered design for digital experiences"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Digital Marketing",
+              "description": "Performance marketing strategies"
+            }
+          }
+        ]
+      }
     }
     </script>
 
@@ -84,6 +164,17 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Preload critical resources for better performance -->
+    <link rel="preload" href="/src/main.tsx" as="script" />
+    <link rel="preload" href="/B.svg" as="image" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" /></noscript>
+    
+    <!-- DNS Prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//res-console.cloudinary.com" />
   </head>
 
   <body>

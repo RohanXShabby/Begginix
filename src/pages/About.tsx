@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer, fadeIn } from "@/lib/motion";
-import { Helmet } from "react-helmet-async";
+import { SEO } from "@/components/SEO";
 import { Card } from "@/components/ui/card";
 import { Users, Target, Award, Heart } from "lucide-react";
 
@@ -37,13 +37,13 @@ export const About = () => {
 
     return (
         <>
-            <Helmet>
-                <title>About Us - Beginnix</title>
-                <meta name="description" content="Learn about Beginnix, a creative digital agency specializing in branding, design, development, and marketing solutions. Discover our mission, values, and team." />
-                <meta property="og:title" content="About Us - Beginnix" />
-                <meta property="og:description" content="Learn about Beginnix, a creative digital agency specializing in branding, design, development, and marketing solutions." />
-                <meta property="og:type" content="website" />
-            </Helmet>
+            <SEO
+                title="About Us - Beginnix | Creative Digital Agency Team & Mission"
+                description="Learn about Beginnix, a creative digital agency specializing in branding, design, development, and marketing solutions. Meet our team led by Rohan Bisht and discover our mission to empower businesses with innovative digital solutions."
+                keywords="about beginnix, creative agency team, digital agency india, rohan bisht, brand design agency, web development team, ui ux designers"
+                url="/about"
+                type="website"
+            />
             <motion.div
                 className="min-h-screen bg-background pt-24"
                 variants={staggerContainer(0.08, 0.1)}
