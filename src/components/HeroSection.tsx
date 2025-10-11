@@ -42,17 +42,14 @@ export const HeroSection = () => {
             <span className="text-crimson bg-blend-difference">Build.Design.Grow.</span>
             <br />We craft brands with<br /> design and tech.
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl text-left leading-relaxed">
-            Transform your business with our comprehensive digital solutions. From stunning brand identities to high-performance websites and strategic digital marketing, we help businesses build, design, and grow in the digital landscape.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 text-left">
+          {/* <div className="flex flex-col sm:flex-row gap-4 text-left">
             <button className="bg-crimson text-white px-8 py-3 rounded-md hover:bg-crimson/90 transition-colors font-medium">
               Start Your Project
             </button>
             <button className="border border-crimson text-crimson px-8 py-3 rounded-md hover:bg-crimson hover:text-white transition-colors font-medium">
               View Our Work
             </button>
-          </div>
+          </div> */}
         </motion.div>
       </motion.div>
       {!isMobile && (

@@ -43,13 +43,48 @@ export const Navigation = () => {
 
           {/* social media */}
           <motion.div className="hidden md:flex items-center space-x-4 text-sm" variants={fadeIn}>
-            <a href="#">FB</a>
+            <motion.a
+              target="_blank"
+              href="https://www.linkedin.com/company/beginnix"
+              aria-label="Facebook"
+              className="hover:text-crimson transition-colors"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              LI
+            </motion.a>
             <span>•</span>
-            <a href="#">IN</a>
+            <motion.a
+              target="_blank"
+              href="https://www.instagram.com/beginnix_"
+              aria-label="Instagram"
+              className="hover:text-crimson transition-colors"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              IG
+            </motion.a>
             <span>•</span>
-            <a href="#">DR</a>
+            <motion.a
+              target="_blank" href="https://x.com/HeyShabby_02"
+              aria-label="Dribbble"
+              className="hover:text-crimson transition-colors"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              X
+            </motion.a>
             <span>•</span>
-            <a href="#">BE</a>
+            <motion.a
+              target="_blank"
+              href="https://www.behance.net/rohanbisht4"
+              aria-label="Behance"
+              className="hover:text-crimson transition-colors"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              BE
+            </motion.a>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -57,19 +92,23 @@ export const Navigation = () => {
             {navItems.map((item) => (
               <motion.div key={item.label} variants={fadeInUp}>
                 {item.category ? (
-                  <button
+                  <motion.button
                     onClick={() => handleCategoryClick(item.category)}
                     className="text-sm font-medium hover:text-crimson transition-colors"
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     {item.label}
-                  </button>
+                  </motion.button>
                 ) : (
-                  <a
+                  <motion.a
                     href={`#${item.href}`}
                     className="text-sm font-medium hover:text-crimson transition-colors"
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     {item.label}
-                  </a>
+                  </motion.a>
                 )}
               </motion.div>
             ))}

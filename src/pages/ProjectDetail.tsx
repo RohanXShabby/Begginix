@@ -84,9 +84,13 @@ export const ProjectDetail = () => {
                                 <Card className="p-6 h-fit">
                                     <div className="space-y-6">
                                         <div>
-                                            <span className="text-crimson font-semibold text-sm uppercase tracking-wide">
-                                                {project.category}
-                                            </span>
+                                            <div className="flex flex-wrap gap-2 mb-2">
+                                                {project.categories.map((category) => (
+                                                    <span key={category} className="text-crimson font-semibold text-sm uppercase tracking-wide">
+                                                        {category}
+                                                    </span>
+                                                ))}
+                                            </div>
                                             <h1 className="text-3xl font-bold mt-2 mb-4">{project.title}</h1>
                                             <p className="text-muted-foreground leading-relaxed">
                                                 {project.description}
@@ -234,8 +238,14 @@ export const ProjectDetail = () => {
                                             </div>
                                         )}
                                         <div className="flex justify-between">
-                                            <span className="text-muted-foreground">Category:</span>
-                                            <span className="font-semibold">{project.category}</span>
+                                            <span className="text-muted-foreground">Categories:</span>
+                                            <div className="flex flex-wrap gap-1 justify-end">
+                                                {project.categories.map((category) => (
+                                                    <span key={category} className="font-semibold text-sm">
+                                                        {category}
+                                                    </span>
+                                                ))}
+                                            </div>
                                         </div>
                                         <div className="flex justify-between">
                                             <span className="text-muted-foreground">Year:</span>
@@ -252,7 +262,7 @@ export const ProjectDetail = () => {
                         <h2 className="text-2xl font-bold mb-8">Related Projects</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {portfolioItems
-                                .filter(item => item.id !== project.id && item.category === project.category)
+                                .filter(item => item.id !== project.id && item.categories.some(cat => project.categories.includes(cat)))
                                 .slice(0, 3)
                                 .map((relatedProject) => (
                                     <Link key={relatedProject.id} to={`/project/${relatedProject.id}`}>
@@ -265,7 +275,13 @@ export const ProjectDetail = () => {
                                                 />
                                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                                     <div className="flex flex-col justify-end h-full p-4 text-white">
-                                                        <span className="text-crimson font-semibold mb-1 text-sm">{relatedProject.category}</span>
+                                                        <div className="flex flex-wrap gap-1 mb-1">
+                                                            {relatedProject.categories.map((category) => (
+                                                                <span key={category} className="text-crimson font-semibold text-xs">
+                                                                    {category}
+                                                                </span>
+                                                            ))}
+                                                        </div>
                                                         <h3 className="text-lg font-semibold mb-1">{relatedProject.title}</h3>
                                                         <p className="text-xs text-gray-200 line-clamp-2">{relatedProject.description}</p>
                                                     </div>

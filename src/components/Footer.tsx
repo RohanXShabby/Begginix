@@ -62,37 +62,40 @@ export const Footer = () => {
               </p>
               <div className="flex items-center space-x-4 text-sm">
                 <motion.a
-                  href="#"
+                  target="_blank"
+                  href="https://www.linkedin.com/company/beginnix"
                   aria-label="Facebook"
                   className="hover:text-crimson transition-colors"
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  FB
+                  LI
                 </motion.a>
                 <span>•</span>
                 <motion.a
-                  href="#"
+                  target="_blank"
+                  href="https://www.instagram.com/beginnix_"
                   aria-label="Instagram"
                   className="hover:text-crimson transition-colors"
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  IN
+                  IG
                 </motion.a>
                 <span>•</span>
                 <motion.a
-                  href="#"
+                  target="_blank" href="https://x.com/HeyShabby_02"
                   aria-label="Dribbble"
                   className="hover:text-crimson transition-colors"
                   whileHover={{ y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  DR
+                  X
                 </motion.a>
                 <span>•</span>
                 <motion.a
-                  href="#"
+                  target="_blank"
+                  href="https://www.behance.net/rohanbisht4"
                   aria-label="Behance"
                   className="hover:text-crimson transition-colors"
                   whileHover={{ y: -2 }}

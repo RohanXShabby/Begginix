@@ -23,7 +23,13 @@ export const PortfolioCard = ({ item, className }: PortfolioCardProps) => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div className="flex flex-col justify-end h-full p-6 text-white">
-                                <span className="text-crimson font-semibold mb-2">{item.category}</span>
+                                <div className="flex flex-wrap gap-1 mb-2">
+                                    {item.categories.map((category) => (
+                                        <span key={category} className="text-crimson font-semibold text-xs">
+                                            {category}
+                                        </span>
+                                    ))}
+                                </div>
                                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                                 <p className="text-sm text-gray-200 line-clamp-2">{item.description}</p>
                             </div>

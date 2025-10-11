@@ -5,7 +5,7 @@ export const filterPortfolioItems = (
     category: PortfolioCategory | 'All'
 ): PortfolioItem[] => {
     if (category === 'All') return items;
-    return items.filter(item => item.category === category);
+    return items.filter(item => item.categories.includes(category));
 };
 
 export const getUniqueYears = (items: PortfolioItem[]): number[] => {
