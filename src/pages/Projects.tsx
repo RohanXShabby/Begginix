@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer, fadeIn } from "@/lib/motion";
 import { Helmet } from "react-helmet-async";
 
-const categories: (PortfolioCategory | 'All')[] = ['All', 'Branding', 'Creative Design', 'UI/UX', 'Development', 'Marketing', 'SEO'];
+const categories: (PortfolioCategory | 'All')[] = ['All', 'Development', 'Branding', 'Creative Design', 'UI/UX',  'Marketing', 'SEO'];
 
 export const Projects = () => {
     const [searchParams] = useSearchParams();

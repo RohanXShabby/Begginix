@@ -21,7 +21,7 @@ export const Portfolio = () => {
             variants={staggerContainer(0.08, 0.1)}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.2 }}                          
         >
             <div className="container relative mx-auto">
                 {/* Section Header */}

@@ -67,13 +67,13 @@ export const ProjectDetail = () => {
                     <motion.div variants={fadeInUp} className="mb-12">
                         <div className="flex flex-col lg:flex-row gap-8">
                             {/* Project Image */}
-                            <div className="lg:w-2/3">
-                                <Card className="overflow-hidden">
-                                    <div className="aspect-[16/9] overflow-hidden">
+                            <div className="lg:w-2/3 " >
+                                <Card className="overflow-hidden bg-gradient-to-tr from-background to-stone-950/50">
+                                    <div className="aspect-[16/9]  overflow-hidden">
                                         <img
                                             src={project.imageUrl}
                                             alt={project.title}
-                                            className="object-cover w-full h-full"
+                                            className="object-contain w-full h-full"
                                         />
                                     </div>
                                 </Card>
