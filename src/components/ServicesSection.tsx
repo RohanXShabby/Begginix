@@ -59,6 +59,7 @@ export const ServicesSection = () => {
 
   return (
     <motion.section
+      id="services"
       className="py-16 px-6 relative overflow-hidden"
       variants={staggerContainer(0.08, 0)}
       initial="hidden"

@@ -179,7 +179,7 @@ export const TermsOfService = () => {
                                 </p>
                                 <div className="text-muted-foreground space-y-2">
                                     <p>Email: <a href="mailto:rohan20ctbisht@gmail.com" className="text-crimson hover:underline">rohan20ctbisht@gmail.com</a></p>
-                                    <p>Phone: <a href="tel:+917302287997" className="text-crimson hover:underline">+91 7302287997</a></p>
+                                    <p>Phone: <a href="tel:+918449998879" className="text-crimson hover:underline">+91 8449998879</a></p>
                                     <p>Location: Dehradun, Uttarakhand, India</p>
                                 </div>
                             </div>

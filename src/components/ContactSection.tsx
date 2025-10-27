@@ -21,16 +21,16 @@ export const ContactSection = () => {
     {
       title: "Phone",
       icon: Phone,
-      href: "tel:+917302287997",
+      href: "tel:+918449998879",
       label: "Call Now",
-      description: "+91 7302287997",
+      description: "+91 8449998879",
       color: "bg-secondary text-secondary-foreground border border-border",
       hoverColor: "hover:bg-muted hover:border-accent/30"
     },
     {
       title: "WhatsApp",
       icon: MessageCircle,
-      href: `https://wa.me/917302287997?text=${message}`,
+      href: `https://wa.me/918449998879?text=${message}`,
       label: "Chat on WhatsApp",
       description: "Quick response",
       color: "bg-secondary text-secondary-foreground border border-border",
@@ -48,8 +48,8 @@ export const ContactSection = () => {
     {
       icon: Phone,
       label: "Phone",
-      value: "+91 7302287997",
-      href: "tel:+917302287997"
+      value: "+91 8449998879",
+      href: "tel:+918449998879"
     },
     {
       icon: MapPin,
@@ -67,6 +67,7 @@ export const ContactSection = () => {
 
   return (
     <motion.section
+      id="contact"
       className="py-24 px-6 relative overflow-hidden"
       variants={staggerContainer(0.08, 0)}
       initial="hidden"

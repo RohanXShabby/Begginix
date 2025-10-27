@@ -4,6 +4,7 @@ import { fadeInUp, staggerContainer, fadeIn } from "@/lib/motion";
 import { Link, useNavigate } from "react-router-dom";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 import { scrollToTop } from "@/lib/scroll-utils";
+import { scrollToElement } from "@/lib/scroll-utils";
 
 export const Footer = () => {
   const navigate = useNavigate();
@@ -11,6 +12,17 @@ export const Footer = () => {
   const handleLinkClick = (to: string) => {
     navigate(to);
     scrollToTop();
+  };
+
+  const handleSectionClick = (id: string) => {
+    // If not on the homepage, navigate there first and then scroll
+    if (window.location.pathname !== "/") {
+      navigate("/");
+      // small delay to allow the home page to mount/render
+      setTimeout(() => scrollToElement(id), 220);
+    } else {
+      scrollToElement(id);
+    }
   };
 
   return (
@@ -199,22 +211,22 @@ export const Footer = () => {
                   </button>
                 </li>
                 <li>
-                  <a
-                    href="#services"
+                  <button
+                    onClick={() => handleSectionClick("services")}
                     className="text-muted-foreground hover:text-crimson transition-colors text-sm flex items-center group"
                   >
                     Services
                     <ArrowUpRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a
-                    href="#contact"
+                  <button
+                    onClick={() => handleSectionClick("contact")}
                     className="text-muted-foreground hover:text-crimson transition-colors text-sm flex items-center group"
                   >
                     Contact
                     <ArrowUpRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </a>
+                  </button>
                 </li>
               </ul>
             </motion.div>
@@ -240,10 +252,10 @@ export const Footer = () => {
                   <div>
                     <p className="text-sm text-muted-foreground">Phone</p>
                     <a
-                      href="tel:+917302287997"
+                      href="tel:+918449998879"
                       className="text-sm hover:text-crimson transition-colors"
                     >
-                      +91 7302287997
+                      +91 8449998879
                     </a>
                   </div>
                 </div>
