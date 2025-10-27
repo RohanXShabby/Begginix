@@ -93,3 +93,10 @@
 .font-barlow-condensed {
   font-family: 'Barlow Condensed', sans-serif;
 }
+
+::selection {
+  background-color: #DB143C;
+  /* highlight color */
+  color: #000000;
+  /* text color */
+}
