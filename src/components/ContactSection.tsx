@@ -1,200 +1,150 @@
-import { Card } from "@/components/ui/card";
-import { motion } from "framer-motion";
-import { Mail, Phone, MessageCircle, MapPin, Send, Clock } from "lucide-react";
-import { fadeInUp, fadeIn, staggerContainer } from "@/lib/motion";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, MessageCircle, ArrowUpRight, Copy, Check, Globe, Clock } from "lucide-react";
+import { fadeInUp, staggerContainer } from "@/lib/motion";
 
 export const ContactSection = () => {
-  const message = encodeURIComponent(
-    "Hello, I would like to discuss your services."
-  );
+  const [isCopied, setIsCopied] = useState(false);
 
-  const contactMethods = [
-    {
-      title: "Email",
-      icon: Mail,
-      href: `mailto:rohan20ctbisht@gmail.com?subject=Business Inquiry&body=${message}`,
-      label: "Send Email",
-      description: "rohan20ctbisht@gmail.com",
-      color: "bg-accent text-accent-foreground",
-      hoverColor: "hover:shadow-[var(--shadow-crimson)]"
-    },
-    {
-      title: "Phone",
-      icon: Phone,
-      href: "tel:+918449998879",
-      label: "Call Now",
-      description: "+91 8449998879",
-      color: "bg-secondary text-secondary-foreground border border-border",
-      hoverColor: "hover:bg-muted hover:border-accent/30"
-    },
-    {
-      title: "WhatsApp",
-      icon: MessageCircle,
-      href: `https://wa.me/918449998879?text=${message}`,
-      label: "Chat on WhatsApp",
-      description: "Quick response",
-      color: "bg-secondary text-secondary-foreground border border-border",
-      hoverColor: "hover:bg-muted hover:border-accent/30"
-    },
-  ];
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "rohan20ctbisht@gmail.com",
-      href: "mailto:rohan20ctbisht@gmail.com"
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+91 8449998879",
-      href: "tel:+918449998879"
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "Dehradun, Uttarakhand",
-      href: null
-    },
-    {
-      icon: Clock,
-      label: "Response Time",
-      value: "Within 24 hours",
-      href: null
-    }
-  ];
+  const handleCopyEmail = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigator.clipboard.writeText("rohan20ctbisht@gmail.com");
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
 
   return (
-    <motion.section
-      id="contact"
-      className="py-24 px-6 relative overflow-hidden"
-      variants={staggerContainer(0.08, 0)}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
-      style={{
-        background: 'var(--gradient-subtle)'
-      }}
-    >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-accent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-accent/60 rounded-full blur-3xl"></div>
-      </div>
+    <section id="contact" className="py-20 bg-background relative overflow-hidden flex flex-col justify-center">
 
-      <div className="container mx-auto max-w-6xl relative">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 bg-secondary rounded-full mb-6 border border-border"
-            variants={fadeIn}
-          >
-            <Send className="w-4 h-4" />
-            <span className="text-sm font-medium">Get In Touch</span>
+      {/* Tasteful Background Gradient */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[400px] bg-crimson/5 blur-[120px] rounded-full opacity-50 pointer-events-none" />
+
+      <div className="w-[85%] max-w-6xl mx-auto relative z-10">
+
+        {/* Header: Minimal & Functional */}
+        <motion.div
+          className="flex flex-col md:flex-row justify-between items-end mb-10 border-b border-border/40 pb-8"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={staggerContainer(0.1, 0)}
+        >
+          <motion.div variants={fadeInUp}>
+            <h2 className="text-4xl md:text-5xl font-semibold font-barlow tracking-tight text-foreground">
+              Let's work <span className="text-muted-foreground italic font-light">together.</span>
+            </h2>
           </motion.div>
 
-          <motion.h2
-            className="text-4xl md:text-6xl font-bold mb-6 font-barlow"
-            variants={fadeInUp}
-          >
-            Let's Start a Conversation
-          </motion.h2>
+          <motion.div variants={fadeInUp} className="flex items-center gap-6 text-xs md:text-sm font-medium text-muted-foreground mt-4 md:mt-0 uppercase tracking-wider">
+            <div className="flex items-center gap-2">
+              <Globe className="w-4 h-4 text-crimson opacity-80" />
+              <span>Dehradun, IN</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Clock className="w-4 h-4 text-crimson opacity-80" />
+              <span>GMT+5:30</span>
+            </div>
+          </motion.div>
+        </motion.div>
 
-          <motion.p
-            className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
-            variants={fadeIn}
-          >
-            Ready to bring your ideas to life? Choose your preferred way to connect
-            and let's discuss how we can help you achieve your goals.
-          </motion.p>
-        </div>
-
-        {/* Contact Methods */}
+        {/* The Compact Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
-          variants={staggerContainer(0.1)}
+          className="grid grid-cols-1 md:grid-cols-2 gap-5"
+          variants={staggerContainer(0.1, 0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
         >
-          {contactMethods.map((method, idx) => (
-            <motion.div key={idx} variants={fadeInUp}>
-              <Card className="group relative overflow-hidden border border-border bg-card hover:shadow-[var(--shadow-elegant)] transition-all duration-500 hover:-translate-y-2">
-                <div className="p-8 text-center">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-secondary border border-border mb-6 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-muted`}>
-                    <method.icon className="w-8 h-8 text-muted-foreground group-hover:text-accent transition-colors duration-300" />
-                  </div>
 
-                  <h3 className="text-xl font-semibold mb-2 font-barlow-condensed">{method.title}</h3>
-                  <p className="text-muted-foreground text-sm mb-6">{method.description}</p>
+          {/* 1. EMAIL CARD - Sleek & Functional */}
+          <motion.div variants={fadeInUp}>
+            <div className="group relative h-[260px] w-full rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm overflow-hidden hover:border-crimson/40 transition-all duration-500 flex flex-col justify-between p-8">
 
-                  <a
-                    href={method.href}
-                    target={method.title !== "Phone" ? "_blank" : "_self"}
-                    rel="noopener noreferrer"
-                    className={`inline-flex items-center justify-center w-full py-3 px-6 font-medium rounded-xl transition-all duration-300 ${method.color} ${method.hoverColor}`}
-                    style={{ transition: 'var(--transition-smooth)' }}
-                  >
-                    {method.label}
+              {/* Top: Icon & Copy */}
+              <div className="flex justify-between items-start">
+                <div className="p-3 rounded-xl bg-secondary/50 text-foreground group-hover:text-crimson transition-colors duration-300">
+                  <Mail className="w-6 h-6" />
+                </div>
+                <button
+                  onClick={handleCopyEmail}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/30 hover:bg-secondary border border-transparent hover:border-border/50 transition-all duration-200 text-xs font-medium text-muted-foreground"
+                >
+                  <span className="uppercase tracking-wider">{isCopied ? "Copied" : "Copy"}</span>
+                  <AnimatePresence mode="wait">
+                    {isCopied ? (
+                      <motion.div key="check" initial={{ scale: 0 }} animate={{ scale: 1 }}>
+                        <Check className="w-3 h-3 text-green-500" />
+                      </motion.div>
+                    ) : (
+                      <motion.div key="copy" initial={{ scale: 0 }} animate={{ scale: 1 }}>
+                        <Copy className="w-3 h-3" />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </button>
+              </div>
+
+              {/* Bottom: Address & Action */}
+              <div>
+                <p className="text-sm text-muted-foreground mb-2">Drop us a line</p>
+                <div className="flex items-end justify-between gap-4">
+                  <a href="mailto:rohan20ctbisht@gmail.com" className="font-mono text-lg md:text-xl lg:text-2xl text-foreground truncate hover:text-crimson transition-colors selection:bg-crimson/20">
+                    rohan20ctbisht@gmail.com
+                  </a>
+                  <a href="mailto:rohan20ctbisht@gmail.com" className="p-3 rounded-full bg-foreground text-background hover:scale-110 transition-transform duration-300 shrink-0">
+                    <ArrowUpRight className="w-5 h-5" />
                   </a>
                 </div>
+              </div>
 
-                {/* Hover Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+              {/* Hover Line */}
+              <div className="absolute bottom-0 left-0 w-0 h-1 bg-crimson group-hover:w-full transition-all duration-500 ease-out" />
+            </div>
+          </motion.div>
 
-        {/* Contact Information Grid */}
-        <Card className="bg-card border border-border">
-          <div className="p-8 md:p-12">
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-              variants={staggerContainer(0.08)}
+
+          {/* 2. WHATSAPP CARD - Direct & Friendly */}
+          <motion.div variants={fadeInUp}>
+            <a
+              href="https://wa.me/918449998879"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block h-full"
             >
-              {contactInfo.map((info, idx) => (
-                <motion.div
-                  key={idx}
-                  className="text-center group"
-                  variants={fadeInUp}
-                >
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-secondary border border-border mb-4 group-hover:bg-muted group-hover:border-accent/30 transition-all duration-300">
-                    <info.icon className="w-6 h-6 text-muted-foreground group-hover:text-accent transition-colors duration-300" />
+              <div className="group relative h-[260px] w-full rounded-2xl border border-border/60 bg-card/50 backdrop-blur-sm overflow-hidden hover:border-[#25D366]/40 transition-all duration-500 flex flex-col justify-between p-8">
+
+                {/* Top: Icon */}
+                <div className="flex justify-between items-start">
+                  <div className="p-3 rounded-xl bg-secondary/50 text-foreground group-hover:text-[#25D366] transition-colors duration-300">
+                    <MessageCircle className="w-6 h-6" />
                   </div>
+                  <div className="px-3 py-1.5 rounded-full bg-[#25D366]/10 text-[#25D366] text-xs font-medium border border-[#25D366]/20">
+                    Online Now
+                  </div>
+                </div>
 
-                  <h4 className="font-semibold text-sm uppercase tracking-wider mb-2 text-muted-foreground font-barlow-condensed">
-                    {info.label}
-                  </h4>
+                {/* Bottom: Text & Action */}
+                <div>
+                  <p className="text-sm text-muted-foreground mb-2">Quick response</p>
+                  <div className="flex items-end justify-between gap-4">
+                    <span className="font-barlow text-2xl md:text-3xl font-medium text-foreground group-hover:text-[#25D366] transition-colors">
+                      Chat on WhatsApp
+                    </span>
+                    <div className="p-3 rounded-full bg-secondary text-foreground group-hover:bg-[#25D366] group-hover:text-white transition-colors duration-300 shrink-0">
+                      <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </div>
+                  </div>
+                </div>
 
-                  {info.href ? (
-                    <a
-                      href={info.href}
-                      className="text-foreground hover:text-accent transition-colors duration-300"
-                    >
-                      {info.value}
-                    </a>
-                  ) : (
-                    <p className="text-foreground">{info.value}</p>
-                  )}
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </Card>
+                {/* Hover Line */}
+                <div className="absolute bottom-0 left-0 w-0 h-1 bg-[#25D366] group-hover:w-full transition-all duration-500 ease-out" />
+              </div>
+            </a>
+          </motion.div>
 
-        {/* Call to Action */}
-        <motion.div
-          className="text-center mt-16"
-          variants={fadeInUp}
-        >
-          <p className="text-muted-foreground mb-4">
-            Prefer a different method? We're flexible and responsive across all channels.
-          </p>
-          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-            <Clock className="w-4 h-4" />
-            <span>Typically respond within 24 hours</span>
-          </div>
         </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 };
