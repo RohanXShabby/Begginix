@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer, fadeIn } from "@/lib/motion";
 import { Helmet } from "react-helmet-async";
 
-const categories: (PortfolioCategory | 'All')[] = ['All', 'Development', 'Branding', 'Creative Design', 'UI/UX',  'Marketing', 'SEO'];
+const categories: (PortfolioCategory | 'All')[] = ['All', 'Development', 'Branding', 'Creative Design', 'UI/UX', 'Marketing', 'SEO'];
 
 export const Projects = () => {
     const [searchParams] = useSearchParams();
@@ -131,12 +131,21 @@ export const Projects = () => {
                                     Let's work together to bring your vision to life. Get in touch to discuss your project requirements.
                                 </p>
                                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                    <Button size="lg" className="bg-crimson hover:bg-crimson/90">
-                                        Start a Project
-                                    </Button>
-                                    <Button size="lg" variant="outline">
-                                        View Our Services
-                                    </Button>
+                                    <a
+                                        href="https://wa.me/918449998879?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20project."
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full sm:w-auto"
+                                    >
+                                        <Button size="lg" className="bg-crimson hover:bg-crimson/90 w-full">
+                                            Start a Project
+                                        </Button>
+                                    </a>
+                                    <a href="/#services" className="w-full sm:w-auto">
+                                        <Button size="lg" variant="outline" className="w-full">
+                                            View Our Services
+                                        </Button>
+                                    </a>
                                 </div>
                             </div>
                         </motion.div>
